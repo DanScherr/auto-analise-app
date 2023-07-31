@@ -11,6 +11,9 @@ import Carregando from "./pages/components/Carregando";
 /** Pages */
 const Layout = lazy(() => import("./pages/Layout/Index"));
 const Home = lazy(() => import("./pages/Home/index"));
+const Criar = lazy(() => import("./pages/Criar/index"));
+const Revisar = lazy(() => import("./pages/Revisar/index"));
+const Analisar = lazy(() => import("./pages/Analisar/index"));
 
 export default function Router(  ) {
     return (
@@ -18,6 +21,9 @@ export default function Router(  ) {
             <Routes>
                 <Route element={<Layout/>}>
                     <Route path="/" element={<Home />} />
+                    <Route path="/criar" element={<Criar />} />
+                    <Route path="/revisar" element={<Revisar />} />
+                    <Route path="/analisar" element={<Analisar />} />
                 </Route>
             </Routes>
         </Suspense>

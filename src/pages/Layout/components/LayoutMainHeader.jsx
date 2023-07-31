@@ -18,6 +18,7 @@ import {
     Tooltip, 
     Avatar,
     Button,
+    Paper,
 } from '@mui/material';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -68,27 +69,32 @@ export default function LayoutMainHeader( ) {
 
                             {/** BIG SCREENS */}
                             {/** Logo */}
-                            <EmojiObjectsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1}} />
-                            <Typography
-                                variant="h6"
-                                noWrap
-                                component="a"
-                                href="/"
-                                sx={{
-                                // mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.1rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                                mr: 4
-                                }}
-                            >
-                                Maiêutica
-                            </Typography>
-
-                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                            <Box sx={{flexGrow: 1}}>
+                                <Button >
+                                    <EmojiObjectsIcon sx={{ 
+                                        display: { xs: 'none', md: 'flex' }, 
+                                        mr: 1,
+                                    }} />
+                                    <Typography
+                                        variant="h6"
+                                        noWrap
+                                        component="a"
+                                        href="/"
+                                        sx={{
+                                        display: { xs: 'none', md: 'flex' },
+                                        fontFamily: 'monospace',
+                                        fontWeight: 700,
+                                        letterSpacing: '.2rem',
+                                        color: 'inherit',
+                                        textDecoration: 'none',
+                                        }}
+                                    >
+                                        Maiêutica
+                                    </Typography>
+                                </Button>
+                            </Box>
+                            {/** Paginas */}
+                            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                                 {paginas.map((page, index) => (
                                 <Button
                                     key={`${page}-${index}`}
@@ -117,7 +123,7 @@ export default function LayoutMainHeader( ) {
                                     
                                 >
                                     <MenuIcon sx={{
-                                        color: 'primary.veryLightMain'
+                                        color: 'primary.lightestMain'
                                     }}/>
                                 </IconButton>
                                 <Menu
@@ -139,13 +145,9 @@ export default function LayoutMainHeader( ) {
                                     }}
                                 >
                                     {paginas.map((page, index) => (
-                                        <MenuItem key={`${page}-${index}`} onClick={() => console.log(`tela pequena pagina`)} sx={[
-                                            {
-                                              ':hover': {
-                                                color: 'primary.veryLightMain',
-                                              },
-                                            },
-                                        ]}
+                                        <MenuItem key={`${page}-${index}`} onClick={() => console.log(`tela pequena pagina`)} sx={{
+                                            color: 'primary.lightestMain',
+                                        }}
                                         >
                                             <Typography textAlign="center">{`${page}-${index}`}</Typography>
                                         </MenuItem>
@@ -154,8 +156,6 @@ export default function LayoutMainHeader( ) {
                                 {/** Logo */}
                                 <EmojiObjectsIcon sx={{my: 'auto'}} />
                             </Box>
-
-                            
 
                             {/** BIG & SMALL SCREENS */}
                             {/** Avatar */}
@@ -182,13 +182,9 @@ export default function LayoutMainHeader( ) {
                                     onClose={handleCloseUserMenu}
                                     >
                                     {configuracao.map((setting) => (
-                                        <MenuItem key={setting} onClick={handleCloseUserMenu} sx={[
-                                            {
-                                              ':hover': {
-                                                color: 'primary.veryLightMain',
-                                              },
-                                            },
-                                        ]}>
+                                        <MenuItem key={setting} onClick={handleCloseUserMenu} sx={{
+                                                color: 'primary.lightestMain',
+                                            }}>
                                             <Typography textAlign="center" >
                                                 {setting}
                                             </Typography>
@@ -200,8 +196,7 @@ export default function LayoutMainHeader( ) {
                     </Container>
                 </AppBar>
             </Slide>
-            <Box sx={{height: 100}} />
+            <Box sx={{height: 80}} />
         </>
-        
     )
 }
