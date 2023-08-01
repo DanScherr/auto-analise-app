@@ -18,15 +18,11 @@ import {
     Tooltip, 
     Avatar,
     Button,
-    Paper,
 } from '@mui/material';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import MenuIcon from '@mui/icons-material/Menu';
 /** Assets */
 import profileImg from './../../../static/images/avatar/logo-profile-01.png'
-
-
-const settings = ['Login','Logout'];
 
 
 export default function LayoutMainHeader( ) {
@@ -69,7 +65,7 @@ export default function LayoutMainHeader( ) {
 
                             {/** BIG SCREENS */}
                             {/** Logo */}
-                            <Box sx={{flexGrow: 1}}>
+                            <Box sx={{display: { xs: 'none', md: 'flex' }, flexGrow: 1}}>
                                 <Button >
                                     <EmojiObjectsIcon sx={{ 
                                         display: { xs: 'none', md: 'flex' }, 
@@ -109,9 +105,8 @@ export default function LayoutMainHeader( ) {
                             {/** SMALL SCREENS */}
                             {/** Menu */}
                             <Box sx={{ 
-                                flexGrow: 10, 
+                                flexGrow: 2,
                                 display: { xs: 'flex', md: 'none' },
-                                width: 50,
                             }}>
                                 <IconButton 
                                     size="large"

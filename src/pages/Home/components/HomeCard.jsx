@@ -1,10 +1,11 @@
+/** MUI */
 import { CardActionArea } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import CardImg from "./../../../static/images/home/no-img.svg"
-
+/** Assets */
+import notFoundImg from './../../../static/images/shared/no-img.svg'
 
 
 export default function HomeCard( {
@@ -13,10 +14,11 @@ export default function HomeCard( {
     title='undefined', 
     desc='lorem ipsum'
 }){
+
     return (
         <>
             <Card sx={{ 
-                maxWidth: 700, 
+                maxWidth: 600, 
                 mx:'auto', 
                 my: 'auto', 
                 color: 'inherit',
@@ -26,8 +28,8 @@ export default function HomeCard( {
                 <CardActionArea sx={{cursor: 'default'}}>
                     <CardMedia
                         component="img"
-                        height="140"
-                        image={img === 'not found' ? CardImg : img}
+                        height="150"
+                        image={img === 'not found' ? notFoundImg : img}
                         alt={altImg}
                         sx={{mt: 2, color: 'primary.veryLightMain', cursor: 'default'}}
                     />
