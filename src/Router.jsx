@@ -6,7 +6,7 @@ import {
     Route
 } from "react-router-dom";
 /** Components */
-import Carregando from "./pages/components/Carregando";
+import { CarregandoMount } from "./pages/components/Carregando/CarregandoMount";
 
 /** Pages */
 const Layout = lazy(() => import("./pages/Layout/Index"));
@@ -17,7 +17,7 @@ const Analisar = lazy(() => import("./pages/Analisar/index"));
 
 export default function Router(  ) {
     return (
-        <Suspense fallback={<Carregando />}>
+        <Suspense fallback={<CarregandoMount.Pagina />}>
             <Routes>
                 <Route element={<Layout/>}>
                     <Route path="/" element={<Home />} />

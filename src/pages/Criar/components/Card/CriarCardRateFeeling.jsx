@@ -14,7 +14,7 @@ export default function CriarCardRateFeeling(  ) {
     return (
         <StyledRating
             name="highlight-selected-only"
-            defaultValue={2}
+            defaultValue={5}
             IconContainerComponent={IconContainer}
             getLabelText={(value) => customIcons[value].label}
             highlightSelectedOnly
