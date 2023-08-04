@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 
-export default function CriarCardAutocomplete(  ) {
+export default function CriarCardAutocomplete( {value, setValue} ) {
 
     const options = listOfFeelings.map((option) => {
         const firstLetter = option.label[0].toUpperCase();
@@ -13,7 +13,22 @@ export default function CriarCardAutocomplete(  ) {
         };
     });
 
-    
+    // const hangleChangeValue = (e) => {
+    //   setValue(e.target.defaultValue);
+    // };
+
+    //to get the value on every input change
+    const onInputChange = (event,value) => {
+      console.log(value)
+      //response from api
+      setValue(value);
+      };
+      
+      //to select input tags
+      const onSelectTag = (e, value) => {
+        setValue(value)
+      }
+
     return (
         <>
             {/** Big */}
@@ -23,9 +38,11 @@ export default function CriarCardAutocomplete(  ) {
                 options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
                 groupBy={(option) => option.firstLetter}
                 renderInput={(params) => 
-                    <TextField {...params} label="Selecione sentimentos" />
+                    <TextField /*value={value} onSelect={hangleChangeValue}*/ {...params} label="Selecione sentimentos" />
                 }
                 sx={{ display: { xs: 'none', md: 'flex' }}}
+                onChange={onSelectTag} // click on the show tags
+                onInputChange={onInputChange}
             />
             {/** Small */}
             <Autocomplete
@@ -34,9 +51,10 @@ export default function CriarCardAutocomplete(  ) {
                 options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
                 groupBy={(option) => option.firstLetter}
                 renderInput={(params) => 
-                    <TextField {...params} label="Sentimentos" />
+                    <TextField  {...params} label="Sentimentos" />
                 }
                 sx={{ display: { xs: 'flex', md: 'none' }}}
+                
             />
         </>
     )
@@ -45,43 +63,43 @@ export default function CriarCardAutocomplete(  ) {
 // List of Feelings
 const listOfFeelings = [
     { label: 'Abandonado', id: 0 },
-    { label: 'Abusado', year: 1 },
-    { label: 'Atacado', year: 2 },
-    { label: 'Traído', year: 3 },
-    { label: 'Intimidado', year: 4 },
-    { label: "Diminuído", year: 5 },
-    { label: 'Manipulado', year: 6 },
+    { label: 'Abusado', id: 1 },
+    { label: 'Atacado', id: 2 },
+    { label: 'Traído', id: 3 },
+    { label: 'Intimidado', id: 4 },
+    { label: "Diminuído", id: 5 },
+    { label: 'Manipulado', id: 6 },
     {
-      label: 'Rejeitado', year: 7,
+      label: 'Rejeitado', id: 7,
     },
-    { label: 'Pressionado', year: 8 },
-    { label: 'Provocado', year: 9 },
+    { label: 'Pressionado', id: 8 },
+    { label: 'Provocado', id: 9 },
     {
       label: 'Não-apreciado',
-      year: 10,
+      id: 10,
     },
     {
       label: 'Não-ouvido',
-      year: 11,
+      id: 11,
     },
-    { label: 'Não-visto', year: 12 },
-    { label: 'Usado', year: 13 },
+    { label: 'Não-visto', id: 12 },
+    { label: 'Usado', id: 13 },
     {
       label: 'Alerta',
-      year: 14,
+      id: 14,
     },
-    { label: "Vivo", year: 15 },
-    { label: 'Atônito', year: 16 },
-    { label: 'Divertido', year: 17 },
-    { label: 'Animado', year: 18 },
+    { label: "Vivo", id: 15 },
+    { label: 'Atônito', id: 16 },
+    { label: 'Divertido', id: 17 },
+    { label: 'Animado', id: 18 },
     {
       label: 'Estimulado',
-      year: 19,
+      id: 19,
     },
-    { label: 'Surpreso', year: 20 },
-    { label: 'Feliz', year: 21 },
-    { label: 'Calmo', year: 22 },
-    { label: "Despreocupado", year: 23 },
-    { label: 'Satisfeito', year: 24 },
-    { label: 'Confiante', year: 25 },
+    { label: 'Surpreso', id: 20 },
+    { label: 'Feliz', id: 21 },
+    { label: 'Calmo', id: 22 },
+    { label: "Despreocupado", id: 23 },
+    { label: 'Satisfeito', id: 24 },
+    { label: 'Confiante', id: 25 },
   ];

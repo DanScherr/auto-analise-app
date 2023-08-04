@@ -15,7 +15,7 @@ import img3 from  './../../../../static/images/criar/card/3.png'
 import img4 from  './../../../../static/images/criar/card/4.png'
 import img5 from  './../../../../static/images/criar/card/5.png'
 /** Components */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CriarMount } from '../CriarMount';
 
 
@@ -25,6 +25,14 @@ export default function CriarCardRoot({
 
     let listOfImgs = [ img0, img1, img2, img3, img4, img5 ];
     const [viewCarousel, setViewCarousel] = useState(true);
+    
+    const [reqBody, setReqBody] = useState({
+        acontecimento: acontecimento,
+        pensamento: pensamento,
+        atitude: atitude,
+        sentimentoDesc: sentimentoDesc,
+        sentimentoState: sentimentoState
+    });
 
     return (
         <>
@@ -77,13 +85,26 @@ export default function CriarCardRoot({
                             </CardContent>
                         </> 
                     }
-
-                    
-                    
                 </CardActionArea>
             </Card>
             <Box />
         </>
-        
     )
-}
+};
+
+/** Fetch API */
+const postCriacao = async () => {
+    let data = [];
+    try {
+        const response = await axios.post(
+            `/api/v1/criacao`, 
+            {body},
+            {mode: 'no-cors'}
+        );
+        data=response.data.data;
+        console.log(response)
+    } catch (error) {
+        console.log(error);
+    };
+    setCriacao({loading: false, data: data});
+};

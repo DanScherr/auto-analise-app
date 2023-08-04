@@ -10,7 +10,10 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 
-export default function CriarCardRateFeeling(  ) {
+export default function CriarCardRateFeeling( {valor, setValue} ) {
+
+  const hangleChangeValue = (e) => setValue(e.target.value);
+
     return (
         <StyledRating
             name="highlight-selected-only"
@@ -20,6 +23,8 @@ export default function CriarCardRateFeeling(  ) {
             highlightSelectedOnly
             size='large'
             sx={{ms: 5}}
+            value={valor}
+            onChange={hangleChangeValue}
         />
     )
 };

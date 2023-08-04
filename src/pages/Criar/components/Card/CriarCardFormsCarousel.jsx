@@ -4,8 +4,33 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { CriarMount } from '../CriarMount';
+import { useEffect, useState } from 'react';
+import { toHaveFormValues } from '@testing-library/jest-dom/matchers';
 
 export default function CriarCardFormsCarousel(  ) {
+
+    /** Input Values */
+    const [acontecimento, setAcontecimento] = useState('');
+    const [pensamento, setPensamento] = useState('');
+    // const [atitude, setAtitude] = useState('');
+    const [sentimentoDesc, setSentimentoDesc] = useState('');
+    const [sentimentoState, setSentimentoState] = useState(Number);
+
+    useEffect(() => {
+        console.log(acontecimento);
+    }, [acontecimento])
+    useEffect(() => {
+        console.log(pensamento);
+    }, [pensamento])
+    useEffect(() => {
+        console.log(sentimentoDesc);
+    }, [sentimentoDesc])
+    useEffect(() => {
+        console.log(sentimentoState);
+    }, [sentimentoState])
+    const handleChangeAcontecimento = (e) => setAcontecimento(e.target.value)
+    const handleChangePensamento = (e) => setPensamento(e.target.value)
+
     return (
         <CardContent>
             <CriarMount.Card.Carousel 
@@ -21,6 +46,8 @@ export default function CriarCardFormsCarousel(  ) {
                             multiline
                             maxRows={10}
                             sx={{width: '100%'}}
+                            value={acontecimento}
+                            onChange={handleChangeAcontecimento}
                         />
                     </>,
 
@@ -34,6 +61,8 @@ export default function CriarCardFormsCarousel(  ) {
                             multiline
                             maxRows={10}
                             sx={{width: '100%'}}
+                            value={pensamento}
+                            onChange={handleChangePensamento}
                         />
                     </>,
 
@@ -50,10 +79,16 @@ export default function CriarCardFormsCarousel(  ) {
                                 justifyContent="center"
                             >
                                 <Grid item xs={4} sm={4} md={2} >
-                                    <CriarMount.Card.Autocomplete />
+                                    <CriarMount.Card.Autocomplete 
+                                        value={sentimentoDesc}
+                                        setValue={setSentimentoDesc}
+                                    />
                                 </Grid>
                                 <Grid item xs={4} sm={4} md={2} sx={{my: 'auto', textAlign: 'center'}}>
-                                    <CriarMount.Card.RateFeeling />
+                                    <CriarMount.Card.RateFeeling 
+                                        value={sentimentoState}
+                                        setValue={setSentimentoState}
+                                    />
                                 </Grid>
                             </Grid>
                         </Box>
